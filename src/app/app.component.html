@@ -12,18 +12,7 @@
                         {{uploadedQuiz.time | date:'dd MMM yyyy hh:mm aa'}}
                      
                     </h1>
-                    <!-- <div *ngIf="editDateTime==true">
-                        <mat-form-field class="quiz-edit-details">
-                            <mat-placeholder>Quiz time</mat-placeholder>
-                            <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix>
-                            </mat-datetimepicker-toggle>
-                            <mat-datetimepicker #datetimePicker type="datetime" openOnFocus="true" timeInterval="5"></mat-datetimepicker>
-                            <input matInput [min]="minDate" [matDatetimepicker]="datetimePicker" autocomplete="off" [(ngModel)]="uploadedQuiz.time" autofocus>
-                        </mat-form-field>
-                        <span class="check-icon" (click)="editDateTime=false">
-                                                <mat-icon>check</mat-icon>
-                                        </span>
-                    </div> -->
+
                 </div>
                 <div class="reward-wrapper"><span class="reward-text">Reward for the event:</span>
                     <div style="flex:1">
@@ -45,7 +34,7 @@
                           <mat-form-field appearance="outline" class="full-width">
     <mat-label>Question {{i+1}}</mat-label>
  <input matInput placeholder="Question {{i+1}}" [(ngModel)]="activity.metadata.question" autocomplete="off"  class="full-width" autofocus>
-  </mat-form-field>{{activity.metadata.question}}
+  </mat-form-field>
 
                       </h3>
                       <h3 (click)="removeQuestion(i)"><img class="float-right" src="https://img.icons8.com/color/22/000000/delete-sign.png"></h3>
