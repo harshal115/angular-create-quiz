@@ -64,9 +64,9 @@
                         </mat-form-field>
                             </mat-radio-button>
                         </mat-radio-group>
-                    </h3>
+                    </h3><p></p><p></p>                                    <button mat-raised-button color="primary" style="margin:10px; width:fit-content" [disabled]='isUploading' (click)="addOption(i)">Add Option</button>
                 </div>
-                                    <button mat-raised-button color="primary" style="margin:10px;" [disabled]='isUploading' (click)="addOption(i)">Add Option</button>
+
                 <div class=" options timeToRead" *ngIf="activity.metadata.length">
                     <!-- <h3 class="mat-h3"></h3> -->
                     <div>Time to read question: {{activity.metadata.length}} sec</div>
