@@ -1,0 +1,87 @@
+<mat-card  class="uploaded-quiz-wrapper">
+            <div>
+                <div class="uploaded-quiz-title">
+
+                    <div >
+                        <mat-form-field class="quiz-edit-details">
+                            <input matInput placeholder="Quiz name" autocomplete="off" [(ngModel)]='uploadedQuiz.eventName' class="full-width" autofocus>
+                        </mat-form-field>
+                    </div>
+
+                    <h1 class="mat-h1 quiz-details" >
+                        {{uploadedQuiz.time | date:'dd MMM yyyy hh:mm aa'}}
+                     
+                    </h1>
+                    <!-- <div *ngIf="editDateTime==true">
+                        <mat-form-field class="quiz-edit-details">
+                            <mat-placeholder>Quiz time</mat-placeholder>
+                            <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix>
+                            </mat-datetimepicker-toggle>
+                            <mat-datetimepicker #datetimePicker type="datetime" openOnFocus="true" timeInterval="5"></mat-datetimepicker>
+                            <input matInput [min]="minDate" [matDatetimepicker]="datetimePicker" autocomplete="off" [(ngModel)]="uploadedQuiz.time" autofocus>
+                        </mat-form-field>
+                        <span class="check-icon" (click)="editDateTime=false">
+                                                <mat-icon>check</mat-icon>
+                                        </span>
+                    </div> -->
+                </div>
+                <div class="reward-wrapper"><span class="reward-text">Reward for the event:</span>
+                    <div style="flex:1">
+                         <mat-form-field style="margin:0 10px; width: -webkit-fill-available;
+                                margin-top: -20px;"> 
+                            <mat-select [(value)]="selectedReward">
+                                <mat-option *ngFor="let reward of rewards; let i = index" [value]="i">
+                                    {{reward.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div *ngFor="let activity of uploadedQuiz.activityList; let i = index">
+                <div class="uploaded-quiz-questions">
+                    <h3 class="question">Q.{{i+1}}</h3>
+                    <h3 class="question">
+                          <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Question {{i+1}}</mat-label>
+ <input matInput placeholder="Question {{i+1}}"  autocomplete="off"  class="full-width" autofocus>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+                      </h3>
+                      <h3 (click)="removeQuestion(i)"><img class="float-right" src="https://img.icons8.com/color/22/000000/delete-sign.png"></h3>
+                </div>
+                <div class="multimedia" *ngIf="activity.subType === 'IMAGE' || activity.subType === 'AUDIO' ">
+                    <img class='question-image' [src]="activity.metadata.url" *ngIf="activity.subType === 'IMAGE'">
+                    <audio controls *ngIf="activity.subType === 'AUDIO'">
+                                <source [src]="activity.metadata.url" type="audio/mpeg">
+                        </audio></div>
+                <div class="uploaded-quiz-questions">
+                    <h3 class="mat-h3"></h3>
+                    <h3 class="mat-h3 options">
+                        <mat-radio-group [value]="activity.metadata.options[activity.metadata.answer]">
+                            <mat-radio-button *ngFor="let option of activity.metadata.options; let i = index" [value]="option">                        <mat-form-field class="quiz-edit-details">
+                            <input matInput placeholder="option {{(i+1)}}" autocomplete="off" [(ngModel)]='option' class="full-width" autofocus>
+                        </mat-form-field>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </h3>
+                </div>
+                <div class=" options timeToRead" *ngIf="activity.metadata.length">
+                    <!-- <h3 class="mat-h3"></h3> -->
+                    <div>Time to read question: {{activity.metadata.length}} sec</div>
+                </div>
+
+                <div class=" options timeToAnswer" *ngIf="activity.timeToAnswer">
+                    <h3 class="mat-h3"></h3>
+                    <div style="display:flex; vertical-align:middle"><p style="margin:auto 0"> Time to select option : </p>
+                       <mat-form-field  style="margin:0px 15px;"  >
+                            <input matInput placeholder="time" type="number" min=1 autocomplete="off" [(ngModel)]='activity.timeToAnswer'autofocus>
+                        </mat-form-field>
+                       <p style="margin:auto 0"> sec </p> </div>
+                </div>
+            </div>
+<button mat-raised-button color="primary" style="margin:10px;width:-webkit-fill-available" [disabled]='isUploading' (click)="addQuestion()">Add Question</button>
+            <button mat-raised-button color="primary" class="" [disabled]='isUploading' >Cancel</button>
+            <button mat-raised-button color="primary" class="float-right" [disabled]='isUploading' >Save</button>
+        </mat-card>
