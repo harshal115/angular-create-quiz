@@ -16,18 +16,19 @@ export class AppComponent  {
   questionCount=1;
   rewards=[{name:"20000 cash"},{name:"50000 cash"}];
   
-  activityTemplate={
-    subType:"TEXT",
-   metadata:{ question:"",
-    options:["","","",""]},
-    timeToAnswer:0
-  }
+ 
 
   addQuestion()
   {
+   let activityTemplate={
+    subType:"TEXT",
+   metadata:{ question:"",
+    options:["",""]},
+    timeToAnswer:0
+  }
     console.log('here');
     // this.uploadedQuiz.activityList=null;
-    this.uploadedQuiz.activityList = this.uploadedQuiz.activityList.concat(this.activityTemplate);
+    this.uploadedQuiz.activityList = this.uploadedQuiz.activityList.concat(activityTemplate);
     console.log(this.uploadedQuiz.activityList);
   }
 
@@ -40,6 +41,8 @@ export class AppComponent  {
   addOption(index)
   {
     console.log("question index",index);
+    this.uploadedQuiz.activityList[index].metadata.options=this.uploadedQuiz.activityList[index].metadata.options.concat('');
+    console.log(this.uploadedQuiz.activityList[index].metadata.options)
   }
 
   displayAll()
