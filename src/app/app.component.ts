@@ -12,7 +12,7 @@ export class AppComponent  {
   time: new Date(),
   activityList:[]
   };
-
+  activityTypes=["TEXT","IMAGE"];
   questionCount=1;
   rewards=[{name:"20000 cash"},{name:"50000 cash"}];
   
@@ -21,8 +21,9 @@ export class AppComponent  {
   addQuestion()
   {
    let activityTemplate={
-    subType:"TEXT",
+    subType:"",
    metadata:{ question:"",
+   url:"",
     options:["",""]},
     timeToAnswer:0
   }

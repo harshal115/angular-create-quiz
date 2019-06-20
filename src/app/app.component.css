@@ -18,6 +18,14 @@
     font-weight: 500;
 }
 
+.horizontal-center{
+  margin: auto 0;
+}
+
+.no-padding .mat-form-field-wrapper{
+  padding:unset !important;
+}
+
 .quiz-list-item>span,
 .mat-h1 {
     word-break: break-word;
@@ -71,6 +79,15 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+.no-padding ::ng-deep .mat-form-field-wrapper{
+  padding:unset !important;
+}
+
+/* h3 .no-padding .mat-form-field-wrapper {
+    background: red !important;
+    padding: 0 !important;
+} */
 
 .custom-button {
     /* background: var(--primary-color); */
@@ -155,6 +172,10 @@ h3 {
     font-size: large;
     box-shadow: unset !important;
     border-radius: 0px;
+}
+
+.center{
+  margin:auto;
 }
 
 .float-right {
@@ -258,10 +279,12 @@ h3 {
         grid-template-columns: unset;
     }
     .reward-wrapper {
-        flex-direction: column;
+        flex-direction: row;
+        display: flex;
     }
     .reward-text {
         margin-bottom: 10px;
+        padding-bottom: 20px;
     }
     @media(min-width:469px) and (max-width: 1024px) {
         .label {
@@ -279,4 +302,8 @@ h3 {
     .button-wrapper {
         display: unset;
     }
+}
+
+::ng-deep .mat-radio-label-content{
+  width: -webkit-fill-available;
 }
