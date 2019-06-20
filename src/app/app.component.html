@@ -42,7 +42,7 @@
 
                 <div class="uploaded-quiz-questions"><p></p><div><span class="reward-text">Question type</span>
                     <div style="flex:1">
-                         <mat-form-field appearance="outline" style="width: -webkit-fill-available;"> 
+                         <mat-form-field style="width: -webkit-fill-available;"> 
                             <mat-select [(value)]="activity.subType">
                                 <mat-option *ngFor="let type of activityTypes; let i = index" [value]="type">
                                     {{type}}
