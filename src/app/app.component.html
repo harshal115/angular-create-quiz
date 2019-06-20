@@ -70,9 +70,9 @@
                 <div class="uploaded-quiz-questions">
                     <h3 class="mat-h3"></h3>
                     <h3 class="mat-h3 options"><span class="reward-text">Options:</span>
-                        <mat-radio-group [value]="activity.metadata.options[activity.metadata.answer]">
-                            <mat-radio-button *ngFor="let option of activity.metadata.options; let j = index" [value]="option">                        <mat-form-field class="quiz-edit-details" >
-                            <input matInput placeholder="option {{(j+1)}}" autocomplete="off" [(ngModel)]='option' class="full-width" autofocus>
+                        <mat-radio-group [(ngModel)]="activity.metadata.answer">{{activity.metadata.answer}}
+                            <mat-radio-button *ngFor="let option of activity.metadata.options; let j = index" [value]="j">                        <mat-form-field class="quiz-edit-details" >
+                            <input matInput placeholder="option {{(j+1)}}" autocomplete="off" class="full-width" autofocus>
                         </mat-form-field>
                             </mat-radio-button>
                         </mat-radio-group>

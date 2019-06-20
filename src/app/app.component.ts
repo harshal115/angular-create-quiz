@@ -24,6 +24,7 @@ export class AppComponent  {
     subType:"",
    metadata:{ question:"",
    url:"",
+   answer:0,
     options:["",""]},
     timeToAnswer:0
   }
