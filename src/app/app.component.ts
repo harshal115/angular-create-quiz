@@ -58,6 +58,6 @@ export class AppComponent  {
 
   displayAll()
   {
-    console.log(this.uploadedQuiz.activityList);
+    console.log(this.uploadedQuiz);
   }
 }
