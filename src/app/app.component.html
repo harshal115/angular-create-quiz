@@ -97,6 +97,9 @@
                       </h3>
 
                       </div>
+
+
+                      
                 <div class="multimedia" *ngIf="activity.subType === 'IMAGE' || activity.subType === 'AUDIO' ">
                     <img class='question-image' [src]="activity.metadata.url" *ngIf="activity.subType === 'IMAGE'">
                     <audio controls *ngIf="activity.subType === 'AUDIO'">
