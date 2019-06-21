@@ -205,6 +205,18 @@ h3 {
     width: 100%;
 }
 
+.custom-divider{
+  margin:18px 0;
+  position: static !important;
+}
+
+    .half-grid{
+      display: grid;
+    grid-template-columns: 1fr 1fr;
+        grid-gap: 14px;      
+        margin: 8px 0;
+    }
+
 .grid-container {
     display: grid;
     grid-template-columns: 2fr 3fr;

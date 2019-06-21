@@ -16,18 +16,24 @@
                 </div>
                 
 
-                <div class="reward-wrapper">
+                <div class="half-grid">
                     <div class="question full-width no-margin">
-                          <mat-form-field class="full-width">
- <input matInput placeholder="Publisher video URL" [(ngModel)]="uploadedQuiz.rtmpUrl" autocomplete="off"  class="full-width">
+                          <mat-form-field class="full-width" >
+ <textarea cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="2"
+ matInput placeholder="Publisher video URL" [(ngModel)]="uploadedQuiz.rtmpUrl" autocomplete="off"  class="full-width"></textarea>
   </mat-form-field>
                       </div>
-                </div>
+                <!-- </div>
 
-                <div class="reward-wrapper ">
-                    <div class="question full-width no-margin">
+                <div class="reward-wrapper "> -->
+                    <div class="question full-width ">
                           <mat-form-field class="full-width">
- <input matInput placeholder="User video URL" [(ngModel)]="uploadedQuiz.videoUrl" autocomplete="off"  class="full-width">
+ <textarea cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="2"
+            matInput placeholder="User video URL" [(ngModel)]="uploadedQuiz.videoUrl" autocomplete="off"  class="full-width"></textarea>
   </mat-form-field>
                       </div>
                 </div>
@@ -57,7 +63,11 @@
                     <h3 class="question">
                           <mat-form-field appearance="outline" class="full-width no-padding">
     <mat-label>Question {{i+1}}</mat-label>
- <input matInput placeholder="Question {{i+1}}" [(ngModel)]="activity.metadata.question" autocomplete="off"  class="full-width" autofocus>
+ <textarea matInput cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+             placeholder="Question {{i+1}}" [(ngModel)]="activity.metadata.question" autocomplete="off"  class="full-width" autofocus></textarea>
   </mat-form-field>
 
                       </h3>
@@ -82,7 +92,7 @@
                            <h3></h3>
                                           <h3 class="question">
                           <mat-form-field class="full-width">
- <input matInput placeholder="URL" [(ngModel)]="activity.metadata.url" autocomplete="off"  class="full-width" >
+ <input matInput placeholder="image URL" [(ngModel)]="activity.metadata.url" autocomplete="off"  class="full-width" >
   </mat-form-field>
                       </h3>
 
@@ -96,7 +106,7 @@
                     <h3 class="mat-h3"></h3>
                     <h3 class="mat-h3 options">
                       <!-- <span class="reward-text">Options:</span> -->
-                        <mat-radio-group [(ngModel)]="activity.metadata.answer">{{activity.metadata.answer}}
+                        <mat-radio-group [(ngModel)]="activity.metadata.answer">
                             <mat-radio-button *ngFor="let option of activity.metadata.options; let j = index" [value]="j">                        <mat-form-field class="quiz-edit-details" >
                             <input matInput placeholder="option {{(j+1)}}" name = "option_{{(j+1)}}" [(ngModel)]="option.value" autocomplete="off" class="full-width" autofocus>
                         </mat-form-field><h3 (click)="removeOption(i,j)" class="horizontal-center" style="margin-left:8px"><img class="float-right horizontal-center" src="https://img.icons8.com/color/22/000000/delete-sign.png"></h3> 
@@ -118,6 +128,7 @@
                         </mat-form-field>
                        <p style="margin:auto 0"> sec </p> </div>
                 </div>
+                <mat-divider *ngIf="i!=uploadedQuiz.activityList.length-1" class="custom-divider"></mat-divider>
             </div>
 <button mat-raised-button color="primary" style="margin:10px;width:-webkit-fill-available" [disabled]='isUploading' (click)="addQuestion()">Add Question</button>
             <button mat-raised-button color="primary" class="" [disabled]='isUploading' >Cancel</button>
