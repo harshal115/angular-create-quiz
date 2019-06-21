@@ -14,9 +14,34 @@
                     </h1>
 
                 </div>
+                
+
+                <div class="reward-wrapper">
+                    <div class="question full-width no-margin">
+                          <mat-form-field class="full-width">
+ <input matInput placeholder="Publisher video URL" [(ngModel)]="uploadedQuiz.rtmpUrl" autocomplete="off"  class="full-width">
+  </mat-form-field>
+                      </div>
+                </div>
+
+                <div class="reward-wrapper ">
+                    <div class="question full-width no-margin">
+                          <mat-form-field class="full-width">
+ <input matInput placeholder="User video URL" [(ngModel)]="uploadedQuiz.videoUrl" autocomplete="off"  class="full-width">
+  </mat-form-field>
+                      </div>
+                </div>
+
+
+
+
+
+
+
+
                 <div class="reward-wrapper"><span class="reward-text center">Reward for the event:</span>
                     <div style="flex:1">
-                         <mat-form-field style="margin:0 10px; width: -webkit-fill-available;"> 
+                         <mat-form-field style="margin:0 0 0 10px; width: -webkit-fill-available;"> 
                             <mat-select [(value)]="selectedReward">
                                 <mat-option *ngFor="let reward of rewards; let i = index" [value]="i">
                                     {{reward.name}}
@@ -73,7 +98,7 @@
                         <mat-radio-group [(ngModel)]="activity.metadata.answer">{{activity.metadata.answer}}
                             <mat-radio-button *ngFor="let option of activity.metadata.options; let j = index" [value]="j">                        <mat-form-field class="quiz-edit-details" >
                             <input matInput placeholder="option {{(j+1)}}" autocomplete="off" class="full-width" autofocus>
-                        </mat-form-field>
+                        </mat-form-field><h3 (click)="removeOption(i,j)" class="horizontal-center"><img class="float-right horizontal-center" src="https://img.icons8.com/color/22/000000/delete-sign.png"></h3> 
                             </mat-radio-button>
                         </mat-radio-group>
                     </h3><p></p><p></p>                                    <button mat-raised-button color="primary" style="margin:10px; width:fit-content" [disabled]='isUploading' (click)="addOption(i)">Add Option</button>

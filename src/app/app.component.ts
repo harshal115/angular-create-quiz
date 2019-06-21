@@ -9,6 +9,8 @@ export class AppComponent  {
   name = 'Angular';
   selectedReward;
   uploadedQuiz={eventName:"Sample Event",
+  videoUrl:"",
+  rtmpUrl:"",
   time: new Date(),
   activityList:[]
   };
@@ -45,6 +47,13 @@ export class AppComponent  {
     console.log("question index",index);
     this.uploadedQuiz.activityList[index].metadata.options=this.uploadedQuiz.activityList[index].metadata.options.concat('');
     console.log(this.uploadedQuiz.activityList[index].metadata.options)
+  }
+
+  removeOption(questionIndex, optionIndex)
+  {
+    console.log("question index",questionIndex);
+    this.uploadedQuiz.activityList[questionIndex].metadata.options.splice(optionIndex,1);
+    console.log(this.uploadedQuiz.activityList[questionIndex].metadata.options);
   }
 
   displayAll()
