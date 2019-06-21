@@ -48,7 +48,7 @@
                 <div class="reward-wrapper"><span class="reward-text center">Reward for the event:</span>
                     <div style="flex:1">
                          <mat-form-field style="margin:0 0 0 10px; width: -webkit-fill-available;"> 
-                            <mat-select [(value)]="selectedReward">
+                            <mat-select [(value)]="selectedReward" placeholder="Reward"> 
                                 <mat-option *ngFor="let reward of rewards; let i = index" [value]="i">
                                     {{reward.name}}
                                 </mat-option>
@@ -75,10 +75,10 @@
                 </div>
 
 
-                <div class="uploaded-quiz-questions"><p></p><div><span class="reward-text">Question type</span>
+                <div class="uploaded-quiz-questions"><p></p><div>
                     <div style="flex:1">
                          <mat-form-field style="width: -webkit-fill-available;"> 
-                            <mat-select [(value)]="activity.subType">
+                            <mat-select [(value)]="activity.subType" placeholder='Question type'>
                                 <mat-option *ngFor="let type of activityTypes; let i = index" [value]="type">
                                     {{type}}
                                 </mat-option>
@@ -99,6 +99,17 @@
                       </div>
 
 
+               <div class="uploaded-quiz-questions" *ngIf="activity.subType!=='TEXT' && activity.subType!==''">
+                           <h3></h3>
+                <div class=" options" >
+                    <h3 class="mat-h3"></h3>
+                    <div style="display:flex; vertical-align:middle"><p style="margin:auto 0"> Time to show multimedia : </p>
+                       <mat-form-field  style="margin:0px 15px;"  >
+                            <input matInput placeholder="time" type="number" min=1 autocomplete="off" [(ngModel)]='activity.metadata.length' autofocus>
+                        </mat-form-field>
+                       <p style="margin:auto 0"> sec </p> </div>
+                </div>
+               </div>
                       
                 <div class="multimedia" *ngIf="activity.subType === 'IMAGE' || activity.subType === 'AUDIO' ">
                     <img class='question-image' [src]="activity.metadata.url" *ngIf="activity.subType === 'IMAGE'">
@@ -118,10 +129,7 @@
                     </h3><p></p><p></p>                                    <button mat-raised-button color="primary" style="margin:10px; width:fit-content" [disabled]='isUploading' (click)="addOption(i)">Add Option</button>
                 </div>
 
-                <div class=" options timeToRead" *ngIf="activity.metadata.length">
-                    <!-- <h3 class="mat-h3"></h3> -->
-                    <div>Time to read question: {{activity.metadata.length}} sec</div>
-                </div>
+
 
                 <div class=" options timeToAnswer" >
                     <h3 class="mat-h3"></h3>

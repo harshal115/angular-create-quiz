@@ -12,7 +12,8 @@ export class AppComponent  {
   videoUrl:"",
   rtmpUrl:"",
   time: new Date(),
-  activityList:[]
+  activityList:[],
+  eventType: "live"
   };
   activityTypes=["TEXT","IMAGE"];
   questionCount=1;
@@ -23,12 +24,14 @@ export class AppComponent  {
   addQuestion()
   {
    let activityTemplate={
+     activityType: "QUIZ",
     subType:"",
    metadata:{ question:"",
+   length:0,
    url:"",
    answer:0,
     options:[{value:""},{value:""}]},
-    timeToAnswer:0
+    timeToAnswer:0,
   }
     console.log('here');
     // this.uploadedQuiz.activityList=null;
