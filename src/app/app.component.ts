@@ -27,7 +27,7 @@ export class AppComponent  {
    metadata:{ question:"",
    url:"",
    answer:0,
-    options:["",""]},
+    options:[{value:""},{value:""}]},
     timeToAnswer:0
   }
     console.log('here');
@@ -45,15 +45,19 @@ export class AppComponent  {
   addOption(index)
   {
     console.log("question index",index);
-    this.uploadedQuiz.activityList[index].metadata.options=this.uploadedQuiz.activityList[index].metadata.options.concat('');
+    this.uploadedQuiz.activityList[index].metadata.options=this.uploadedQuiz.activityList[index].metadata.options.concat({value:''});
     console.log(this.uploadedQuiz.activityList[index].metadata.options)
   }
 
   removeOption(questionIndex, optionIndex)
   {
     console.log("question index",questionIndex);
+      if(optionIndex-1 < this.uploadedQuiz.activityList[questionIndex].metadata.answer)
+ this.uploadedQuiz.activityList[questionIndex].metadata.answer =  this.uploadedQuiz.activityList[questionIndex].metadata.answer -1;
+
     this.uploadedQuiz.activityList[questionIndex].metadata.options.splice(optionIndex,1);
     console.log(this.uploadedQuiz.activityList[questionIndex].metadata.options);
+
   }
 
   displayAll()

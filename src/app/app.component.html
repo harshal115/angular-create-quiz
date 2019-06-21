@@ -94,10 +94,11 @@
                         </audio></div>
                 <div class="uploaded-quiz-questions">
                     <h3 class="mat-h3"></h3>
-                    <h3 class="mat-h3 options"><span class="reward-text">Options:</span>
+                    <h3 class="mat-h3 options">
+                      <!-- <span class="reward-text">Options:</span> -->
                         <mat-radio-group [(ngModel)]="activity.metadata.answer">{{activity.metadata.answer}}
                             <mat-radio-button *ngFor="let option of activity.metadata.options; let j = index" [value]="j">                        <mat-form-field class="quiz-edit-details" >
-                            <input matInput placeholder="option {{(j+1)}}" autocomplete="off" class="full-width" autofocus>
+                            <input matInput placeholder="option {{(j+1)}}" name = "option_{{(j+1)}}" [(ngModel)]="option.value" autocomplete="off" class="full-width" autofocus>
                         </mat-form-field><h3 (click)="removeOption(i,j)" class="horizontal-center" style="margin-left:8px"><img class="float-right horizontal-center" src="https://img.icons8.com/color/22/000000/delete-sign.png"></h3> 
                             </mat-radio-button>
                         </mat-radio-group>
