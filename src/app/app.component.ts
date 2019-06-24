@@ -65,6 +65,29 @@ export class AppComponent  {
 
   displayAll()
   {
+    this.convertOptionsToStringArray();
     console.log(this.uploadedQuiz);
+    this.convertOptionsToJsonArray();
+    console.log(this.uploadedQuiz);
+  }
+
+  convertOptionsToStringArray() {
+    this.uploadedQuiz.activityList.forEach((activity)=>{
+      for(let i=0; i<activity.metadata.options.length;i++) {
+        console.log(activity.metadata.options[i]);
+        if(activity.metadata.options[i].value)
+        activity.metadata.options[i] = activity.metadata.options[i].value;
+      };
+    });
+  }
+
+  convertOptionsToJsonArray(){
+    this.uploadedQuiz.activityList.forEach((activity)=>{
+      for(let i=0; i<activity.metadata.options.length;i++) {
+        console.log(activity.metadata.options[i]);
+        if(!activity.metadata.options[i].value)
+        activity.metadata.options[i] = { value:activity.metadata.options[i] }
+      };
+    });
   }
 }
